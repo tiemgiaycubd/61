@@ -13,6 +13,13 @@
         /* Ẩn thanh cuộn ngang trên mobile nhưng vẫn cuộn được */
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Hiệu ứng loading nhấp nháy mượt */
+        @keyframes pulse-soft {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+        .animate-pulse-soft { animation: pulse-soft 2s infinite ease-in-out; }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 antialiased flex flex-col min-h-screen">
@@ -45,7 +52,7 @@
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-300">Với Chi Phí Tối Ưu Nhất</span>
                 </h1>
                 <p class="text-gray-300 text-base md:text-lg max-w-xl mx-auto font-light leading-relaxed">
-                    Chuyên các dòng giày thể thao, bóng rổ, pickleball tuyển chọn nước một. Độ mới cao, cam kết ảnh thật, bao check, ship COD toàn quốc.
+                    Chuyên các dòng giày thể thao, bóng rổ, pickleball tuyển chọn nước một. Độ mới cực cao, cam kết ảnh thật, bao check, ship COD toàn quốc.
                 </p>
                 
                 <!-- NÚT CHUYỂN TRANG CHÍNH: XEM TOÀN BỘ GIÀY TẠI TIỆM -->
@@ -252,54 +259,9 @@
 
     <!-- JAVASCRIPT ĐIỀU HƯỚNG & XỬ LÝ KHO GIÀY TRỰC TIẾP -->
     <script>
-        // 1. KHO DỮ LIỆU GIÀY CHI TIẾT THEO SIZE
-        // Bạn có thể thoải mái thêm các ảnh trực tiếp (Direct Link) từ ImgBB của bạn vào đây.
-        // Chỉ cần lấy link có đuôi đuôi ảnh (như .jpg, .png...) dán vào phần "img".
-        const shoeCatalog = {
-            36: [
-                {
-                    name: "Nike Air Zoom GT Cut Academy",
-                    price: "9xx.000 đ",
-                    condition: "Độ mới 95%",
-                    img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&auto=format&fit=crop&q=60", // Thay bằng link ảnh ImgBB của bạn
-                    status: "Còn hàng"
-                },
-                {
-                    name: "Adidas Ultraboost Light Carbon",
-                    price: "7xx.000 đ",
-                    condition: "Độ mới 98%",
-                    img: "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=600&auto=format&fit=crop&q=60", // Thay bằng link ảnh ImgBB của bạn
-                    status: "Còn hàng"
-                },
-                {
-                    name: "Asics Gel-Resolution 9 Pickleball",
-                    price: "8xx.000 đ",
-                    condition: "Độ mới 96%",
-                    img: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=600&auto=format&fit=crop&q=60", // Thay bằng link ảnh ImgBB của bạn
-                    status: "Còn hàng"
-                },
-                {
-                    name: "Jordan Jumpman MVP Panda",
-                    price: "1.1xx.000 đ",
-                    condition: "Độ mới 94%",
-                    img: "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=600&auto=format&fit=crop&q=60", // Thay bằng link ảnh ImgBB của bạn
-                    status: "Còn hàng"
-                }
-            ],
-            37: [],
-            38: [],
-            39: [],
-            40: [],
-            41: [],
-            42: [],
-            43: [],
-            44: [],
-            45: []
-        };
-
-        // Liên kết album gốc để khách bấm xem thêm nếu muốn
-        const albumLinks = {
-            36: "https://ibb.co/album/B45gQ8",
+        // 1. CẤU HÌNH ALBUM IMGBB - DÙNG CHO PHƯƠNG ÁN TỰ ĐỘNG ĐỒNG BỘ
+        const imgbbAlbums = {
+            36: "https://ibb.co/album/B45gQ8", // Album size 36 của bạn
             37: "",
             38: "",
             39: "",
@@ -310,6 +272,9 @@
             44: "",
             45: ""
         };
+
+        const DEFAULT_PRICE = "Giá tại tiệm (Inbox)";
+        const DEFAULT_CONDITION = "Độ mới 95% - 98%";
 
         // 2. Hàm chuyển đổi View/Trang (SPA)
         function navigateTo(viewId) {
@@ -322,13 +287,51 @@
                 document.getElementById('landing-view').classList.add('hidden');
                 document.getElementById('catalog-view').classList.remove('hidden');
                 
-                // Mặc định chọn trước Size 36 để hiện thị
+                // Mặc định chọn trước Size 36 để hiển thị
                 selectSize(36);
             }
         }
 
-        // 3. Hàm xử lý khi khách click chọn Size
-        function selectSize(size) {
+        // 3. Công nghệ quét mã HTML công khai của album ImgBB và tự động lấy ra tất cả link ảnh
+        async function fetchImagesFromAlbum(albumUrl) {
+            if (!albumUrl) return [];
+            
+            try {
+                // Sử dụng AllOrigins làm CORS proxy miễn phí và an toàn
+                const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(albumUrl)}`;
+                const response = await fetch(proxyUrl);
+                if (!response.ok) return [];
+                const htmlText = await response.text();
+
+                // Làm sạch các ký tự escape gạch chéo ngược lỡ có trong chuỗi javascript của ImgBB
+                const cleanHtml = htmlText.replace(/\\/g, '');
+
+                // Tìm tất cả các liên kết ảnh trực tiếp của ImgBB có dạng i.ibb.co
+                const regex = /https:\/\/i\.ibb\.co\/[a-zA-Z0-9]+\/[a-zA-Z0-9-_.]+\.(?:jpe?g|png|webp)/ig;
+                const matches = cleanHtml.match(regex) || [];
+                
+                // Loại bỏ các liên kết bị lặp
+                let uniqueUrls = [...new Set(matches)];
+
+                // Loại bỏ logo thương hiệu ra khỏi danh sách hiển thị nếu bị quét trúng
+                uniqueUrls = uniqueUrls.filter(url => !url.includes('NgYRHY8R/LOGO-2-01'));
+
+                // Trả về danh sách sản phẩm giày được tạo lập tự động
+                return uniqueUrls.map((directImgUrl, index) => ({
+                    name: `Giày Tuyển Chọn Size Mẫu #${index + 1}`,
+                    price: DEFAULT_PRICE,
+                    condition: DEFAULT_CONDITION,
+                    img: directImgUrl
+                }));
+
+            } catch (error) {
+                console.error("Lỗi khi đồng bộ Album từ ImgBB:", error);
+                return [];
+            }
+        }
+
+        // 4. Hàm xử lý khi khách click chọn Size
+        async function selectSize(size) {
             // Thay đổi trạng thái hiển thị của nút Tab Size hoạt động
             document.querySelectorAll('.size-card').forEach(card => {
                 card.classList.remove('border-orange-500', 'bg-orange-50/45', 'scale-105');
@@ -344,28 +347,46 @@
             // Đổi tiêu đề hiển thị
             document.getElementById('current-size-title').innerText = `Danh sách giày Size ${size}`;
 
-            // Cấu hình link album ngoài (nếu có)
+            // Cấu hình hiển thị link xem album ngoài
             const extLink = document.getElementById('size-external-link');
-            if (albumLinks[size]) {
-                extLink.href = albumLinks[size];
+            if (imgbbAlbums[size]) {
+                extLink.href = imgbbAlbums[size];
                 extLink.classList.remove('hidden');
             } else {
                 extLink.classList.add('hidden');
             }
 
-            // Đọc và render danh sách giày trực tiếp lên trang
             const grid = document.getElementById('product-grid');
-            grid.innerHTML = ''; // Clear danh sách cũ
+            
+            // Hiện trạng thái chờ đồng bộ dữ liệu
+            grid.innerHTML = `
+                <div class="col-span-full text-center py-16 flex flex-col items-center justify-center space-y-3">
+                    <svg class="animate-spin h-8 w-8 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <p class="text-gray-500 text-sm font-medium animate-pulse-soft">Đang đồng bộ trực tiếp kho ảnh từ Album ImgBB...</p>
+                </div>
+            `;
 
-            const products = shoeCatalog[size] || [];
+            // Gọi tiến trình quét ảnh từ Album ImgBB
+            const albumUrl = imgbbAlbums[size];
+            const products = await fetchImagesFromAlbum(albumUrl);
+
+            grid.innerHTML = ''; // Clear giao diện loading
 
             if (products.length > 0) {
-                products.forEach(shoe => {
+                products.forEach((shoe, index) => {
+                    const uniqueId = `img-resolved-${size}-${index}`;
                     const shoeCard = `
                         <div class="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm flex flex-col justify-between group hover:shadow-lg transition-all duration-300">
-                            <div class="relative cursor-pointer overflow-hidden" onclick="openLightbox('${shoe.img}', '${shoe.name}', '${shoe.price}', ${size})">
+                            <div class="relative cursor-pointer overflow-hidden" onclick="triggerLightbox('${uniqueId}', '${shoe.name}', '${shoe.price}', ${size})">
+                                <!-- Trình loading ảnh nhỏ -->
+                                <div id="loader-${uniqueId}" class="absolute inset-0 bg-gray-50 flex flex-col justify-center items-center">
+                                    <span class="text-[10px] text-gray-400 font-semibold animate-pulse-soft">Đang tải ảnh...</span>
+                                </div>
                                 <!-- Ảnh sản phẩm -->
-                                <img src="${shoe.img}" alt="${shoe.name}" class="w-full h-40 sm:h-52 object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/400x300/f3f4f6/9ca3af?text=ImgBB+Error'">
+                                <img id="${uniqueId}" src="${shoe.img}" alt="${shoe.name}" class="w-full h-40 sm:h-52 object-cover opacity-0 transition-opacity duration-300 group-hover:scale-105" onload="onImageLoaded('${uniqueId}')" onerror="handleImageError(this)">
                                 <!-- Tag độ mới -->
                                 <span class="absolute top-2 left-2 bg-orange-500 text-white text-[10px] font-extrabold px-2 py-1 rounded-md shadow">
                                     ${shoe.condition}
@@ -379,10 +400,10 @@
                                 <div class="pt-3">
                                     <p class="text-orange-500 font-extrabold text-base md:text-lg">${shoe.price}</p>
                                     <div class="grid grid-cols-2 gap-2 mt-3">
-                                        <button onclick="openLightbox('${shoe.img}', '${shoe.name}', '${shoe.price}', ${size})" class="text-center bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold py-2 rounded-lg text-xs transition-colors">
+                                        <button onclick="triggerLightbox('${uniqueId}', '${shoe.name}', '${shoe.price}', ${size})" class="text-center bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold py-2 rounded-lg text-xs transition-colors">
                                             Xem Ảnh To
                                         </button>
-                                        <a href="https://zalo.me/0378155320?text=Tôi muốn tư vấn đôi ${shoe.name} size ${size}" target="_blank" class="text-center bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 rounded-lg text-xs transition-colors">
+                                        <a href="https://zalo.me/0378155320?text=Shop tư vấn giúp mình mẫu giày này còn sẵn size ${size} không nhé: ${encodeURIComponent(shoe.img)}" target="_blank" class="text-center bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 rounded-lg text-xs transition-colors">
                                             Zalo Mua
                                         </a>
                                     </div>
@@ -393,7 +414,7 @@
                     grid.innerHTML += shoeCard;
                 });
             } else {
-                // Nếu chưa có sản phẩm nào cho size đó
+                // Nếu chưa có sản phẩm nào cho size đó hoặc chưa có link album
                 grid.innerHTML = `
                     <div class="col-span-full bg-white rounded-2xl p-12 text-center border border-gray-100 shadow-sm space-y-4">
                         <div class="text-5xl">👟</div>
@@ -411,14 +432,45 @@
             }
         }
 
-        // 4. Các hàm đóng/mở Lightbox phóng to ảnh sản phẩm
-        function openLightbox(imgUrl, title, price, size) {
-            document.getElementById('lightbox-img').src = imgUrl;
+        // Hiện ảnh mượt mà sau khi tải xong
+        function onImageLoaded(imgId) {
+            const img = document.getElementById(imgId);
+            const loader = document.getElementById(`loader-${imgId}`);
+            if (img) {
+                img.classList.remove('opacity-0');
+            }
+            if (loader) {
+                loader.classList.add('hidden');
+            }
+        }
+
+        // Tự động xử lý khi ảnh bị lỗi
+        function handleImageError(imgElement) {
+            imgElement.src = 'https://placehold.co/400x300/fee2e2/ef4444?text=Lỗi+Liên+Kết+Ảnh';
+            const loaderId = imgElement.id ? `loader-${imgElement.id}` : '';
+            const loader = document.getElementById(loaderId);
+            if (loader) {
+                loader.classList.add('hidden');
+            }
+            imgElement.classList.remove('opacity-0');
+        }
+
+        // 5. Các hàm đóng/mở Lightbox phóng to ảnh sản phẩm
+        function triggerLightbox(imgId, title, price, size) {
+            const resolvedImg = document.getElementById(imgId);
+            const lightboxImg = document.getElementById('lightbox-img');
+            
+            if (resolvedImg && resolvedImg.src) {
+                lightboxImg.src = resolvedImg.src;
+            } else {
+                lightboxImg.src = 'https://placehold.co/800x600/f3f4f6/374151?text=Đang+Tải+Ảnh';
+            }
+            
             document.getElementById('lightbox-title').innerText = title;
             document.getElementById('lightbox-price').innerText = price;
             
             // Tối ưu tin nhắn gửi sang zalo khi click đặt mua đôi này
-            const encodedText = encodeURIComponent(`Tôi muốn mua sản phẩm: ${title} (Size: ${size}, Giá: ${price})`);
+            const encodedText = encodeURIComponent(`Shop kiểm tra giúp mình mẫu giày này có còn sẵn size ${size} không nhé: ${lightboxImg.src}`);
             document.getElementById('lightbox-zalo-btn').href = `https://zalo.me/0378155320?text=${encodedText}`;
 
             document.getElementById('lightbox-modal').classList.remove('hidden');
@@ -441,3 +493,5 @@
     </script>
 </body>
 </html>
+```
+eof
