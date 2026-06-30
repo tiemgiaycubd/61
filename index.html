@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Tiệm Giày Cũ Bình Dương | Bio Link</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Tải phông chữ Be Vietnam Pro thuần Việt sắc nét */
+        @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800;900&display=swap');
+        
+        body {
+            background-color: #faf9f5; /* Nền kem ấm sang trọng kiểu boutique */
+            color: #1a1a1a;
+            font-family: 'Be Vietnam Pro', sans-serif;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Hiệu ứng trôi dạt nhẹ của quầng sáng Rose phía sau */
+        @keyframes driftBlob {
+            0% { transform: translate(-50%, -50%) translate(0px, 0px) scale(1); }
+            33% { transform: translate(-50%, -50%) translate(30px, -40px) scale(1.15); }
+            66% { transform: translate(-50%, -50%) translate(-25px, 20px) scale(0.9); }
+            100% { transform: translate(-50%, -50%) translate(0px, 0px) scale(1); }
+        }
+        .animate-drift-blob {
+            animation: driftBlob 16s ease-in-out infinite;
+        }
+
+        /* Hiệu ứng quét sáng sang trọng trên nút chỉ đường đỏ */
+        @keyframes sweepShimmer {
+            0% { left: -150%; }
+            50% { left: 150%; }
+            100% { left: 150%; }
+        }
+        .shimmer-sweep::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.4) 50%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            transform: skewX(-20deg);
+            animation: sweepShimmer 4s infinite ease-in-out;
+        }
+
+        /* Hiệu ứng xuất hiện so le (Fade In Up) */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .anim-fade-up {
+            opacity: 0;
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .delay-1 { animation-delay: 100ms; }
+        .delay-2 { animation-delay: 200ms; }
+        .delay-3 { animation-delay: 300ms; }
+        .delay-4 { animation-delay: 400ms; }
+        .delay-5 { animation-delay: 500ms; }
+        .delay-6 { animation-delay: 600ms; }
+        .delay-7 { animation-delay: 700ms; }
+        .delay-8 { animation-delay: 800ms; }
+
+        /* Thiết kế viền nút mờ mịn màng */
+        .btn-luxury {
+            background-color: #ffffff;
+            border: 1px solid #f0f0f0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .btn-luxury:hover {
+            border-color: #e11d48; /* Màu đỏ Rose khớp logo */
+            box-shadow: 0 10px 30px rgba(225, 29, 72, 0.08);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="selection:bg-red-100 selection:text-red-950 min-h-screen flex flex-col justify-between items-center px-4 py-10 relative">
+
+    <!-- Quầng sáng Rose/Red mờ chuyển động mượt mà tạo chiều sâu 3D nghệ thuật -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-80 h-80 bg-red-500/5 rounded-full blur-[90px] pointer-events-none z-0 animate-drift-blob"></div>
+
+    <!-- KHU VỰC LOGO CHÍNH THỨC & GIỚI THIỆU -->
+    <header class="w-full max-w-md text-center space-y-4 z-10 pt-4">
+        <!-- Logo chính thức từ file LOGO 2-01.jpg với hiệu ứng xuất hiện đầu tiên -->
+        <div class="w-28 h-28 bg-white rounded-full mx-auto flex items-center justify-center p-1.5 shadow-xl shadow-red-950/5 border border-zinc-100 anim-fade-up">
+            <img src="LOGO 2-01.jpg" alt="Tiệm Giày Cũ Bình Dương Logo" class="w-full h-full object-contain rounded-full" onerror="this.src='https://placehold.co/150x150/e11d48/ffffff?text=TGCBD'">
+        </div>
+
+        <div class="space-y-1.5 anim-fade-up delay-1">
+            <h1 class="text-xl md:text-2xl font-black tracking-wider uppercase text-zinc-900">
+                Tiệm Giày Cũ <span class="text-[#e11d48]">Bình Dương</span>
+            </h1>
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 bg-red-500/10 rounded-full text-[10px] text-[#e11d48] font-bold tracking-widest uppercase">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#e11d48] animate-pulse"></span> Authentic Sneaker Boutique
+            </div>
+        </div>
+
+        <p class="text-zinc-500 text-xs md:text-sm max-w-sm mx-auto font-medium leading-relaxed">
+            Hệ thống mua bán, ký gửi Sneaker chính hãng New & Used tuyển chọn kỹ lưỡng. Cam kết chính hãng bao check trọn đời.
+        </p>
+    </header>
+
+    <!-- HỆ THỐNG NÚT BẤM KẾT NỐI ĐA KÊNH -->
+    <main class="w-full max-w-md space-y-3.5 z-10 my-8">
+        
+        <!-- NÚT CHỈ ĐƯỜNG MÀU ĐỎ SANG TRỌNG CÓ HIỆU ỨNG QUÉT SÁNG -->
+        <a href="https://maps.app.goo.gl/wsJydE8pHBaL15RX9" target="_blank" class="shimmer-sweep relative overflow-hidden w-full py-4 bg-gradient-to-r from-[#e11d48] to-[#9f1239] text-white font-extrabold text-xs tracking-[0.15em] rounded-2xl flex items-center justify-center gap-2 transition-all transform hover:-translate-y-0.5 active:scale-95 uppercase shadow-md shadow-red-900/15 anim-fade-up delay-2">
+            <i class="fas fa-map-marker-alt text-sm"></i> Xem chỉ đường tới cửa hàng
+        </a>
+
+        <div class="pt-4 pb-1 text-center anim-fade-up delay-3">
+            <span class="text-[9px] font-extrabold tracking-[0.2em] text-zinc-400 uppercase">— LIÊN HỆ ĐẶT HÀNG NHANH —</span>
+        </div>
+
+        <!-- Zalo Chat -->
+        <a href="https://zalo.me/0378155320" target="_blank" class="btn-luxury w-full p-4 rounded-2xl flex items-center justify-between group active:scale-98 anim-fade-up delay-4">
+            <div class="flex items-center gap-3.5">
+                <div class="w-9 h-9 bg-blue-50 text-blue-500 rounded-xl flex items-center justify-center text-sm group-hover:bg-[#006AF5] group-hover:text-white transition-all">
+                    <i class="fab fa-telegram-plane"></i>
+                </div>
+                <div class="text-left">
+                    <span class="text-xs md:text-sm font-bold tracking-wide text-zinc-800 block">Zalo Message</span>
+                    <span class="text-[10px] text-zinc-400 font-medium">Hỗ trợ & Gửi ảnh thực tế</span>
+                </div>
+            </div>
+            <i class="fas fa-chevron-right text-zinc-350 text-xs group-hover:text-red-500 transition-colors"></i>
+        </a>
+
+        <!-- Facebook Fanpage -->
+        <a href="https://www.facebook.com/tiemgiaycuBinhDuong/" target="_blank" class="btn-luxury w-full p-4 rounded-2xl flex items-center justify-between group active:scale-98 anim-fade-up delay-5">
+            <div class="flex items-center gap-3.5">
+                <div class="w-9 h-9 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center text-sm group-hover:bg-blue-600 group-hover:text-white transition-all">
+                    <i class="fab fa-facebook-f"></i>
+                </div>
+                <div class="text-left">
+                    <span class="text-xs md:text-sm font-bold tracking-wide text-zinc-800 block">Facebook Page</span>
+                    <span class="text-[10px] text-zinc-400 font-medium">Tiệm Giày Cũ Bình Dương</span>
+                </div>
+            </div>
+            <i class="fas fa-chevron-right text-zinc-350 text-xs group-hover:text-red-500 transition-colors"></i>
+        </a>
+
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/tiemgiaycubinhduong" target="_blank" class="btn-luxury w-full p-4 rounded-2xl flex items-center justify-between group active:scale-98 anim-fade-up delay-6">
+            <div class="flex items-center gap-3.5">
+                <div class="w-9 h-9 bg-pink-50 text-pink-500 rounded-xl flex items-center justify-center text-sm group-hover:bg-gradient-to-tr group-hover:from-yellow-500 group-hover:to-pink-500 group-hover:text-white transition-all">
+                    <i class="fab fa-instagram"></i>
+                </div>
+                <div class="text-left">
+                    <span class="text-xs md:text-sm font-bold tracking-wide text-zinc-800 block">Instagram</span>
+                    <span class="text-[10px] text-zinc-400 font-medium">@tiemgiaycubinhduong</span>
+                </div>
+            </div>
+            <i class="fas fa-chevron-right text-zinc-350 text-xs group-hover:text-red-500 transition-colors"></i>
+        </a>
+
+        <!-- TikTok -->
+        <a href="https://www.tiktok.com/@tiemgiaycubinhduong?_r=1&_t=ZS-96iMc76gNnh." target="_blank" class="btn-luxury w-full p-4 rounded-2xl flex items-center justify-between group active:scale-98 anim-fade-up delay-7">
+            <div class="flex items-center gap-3.5">
+                <div class="w-9 h-9 bg-zinc-100 text-zinc-800 rounded-xl flex items-center justify-center text-sm group-hover:bg-[#111111] group-hover:text-white transition-all">
+                    <i class="fab fa-tiktok"></i>
+                </div>
+                <div class="text-left">
+                    <span class="text-xs md:text-sm font-bold tracking-wide text-zinc-800 block">TikTok Channel</span>
+                    <span class="text-[10px] text-zinc-400 font-medium">Video Giày Thực Tế</span>
+                </div>
+            </div>
+            <i class="fas fa-chevron-right text-zinc-350 text-xs group-hover:text-red-500 transition-colors"></i>
+        </a>
+
+        <!-- Threads -->
+        <a href="https://www.threads.com/@tiemgiaycubinhduong" target="_blank" class="btn-luxury w-full p-4 rounded-2xl flex items-center justify-between group active:scale-98 anim-fade-up delay-8">
+            <div class="flex items-center gap-3.5">
+                <div class="w-9 h-9 bg-zinc-100 text-zinc-900 rounded-xl flex items-center justify-center text-sm group-hover:bg-[#000000] group-hover:text-white transition-all">
+                    <i class="fa-brands fa-threads"></i>
+                </div>
+                <div class="text-left">
+                    <span class="text-xs md:text-sm font-bold tracking-wide text-zinc-800 block">Threads</span>
+                    <span class="text-[10px] text-zinc-400 font-medium">@tiemgiaycubinhduong</span>
+                </div>
+            </div>
+            <i class="fas fa-chevron-right text-zinc-350 text-xs group-hover:text-red-500 transition-colors"></i>
+        </a>
+
+    </main>
+
+    <!-- FOOTER ĐỒNG BỘ CHẤT LƯỢNG -->
+    <footer class="w-full max-w-md text-center space-y-3 z-10 pt-6 border-t border-neutral-200/60 text-zinc-400 anim-fade-up" style="animation-delay: 900ms;">
+        <div class="space-y-1 text-[11px] leading-relaxed">
+            <p class="font-bold text-zinc-700">📍 TIỆM GIÀY CŨ BÌNH DUƠNG</p>
+            <p class="font-medium text-zinc-400">22 Ngô Chí Quốc, Thủ Dầu Một, Bình Dương</p>
+            <p class="font-bold text-zinc-500 mt-1">📞 Hotline: 0378.155.320</p>
+        </div>
+        <p class="text-[9px] text-zinc-300 font-extrabold tracking-widest uppercase">© 2026 Tiệm Giày Cũ Bình Dương. Designed for sneakerheads.</p>
+    </footer>
+
+</body>
+</html>
