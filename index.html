@@ -29,8 +29,8 @@
     <!-- ================= 1. THANH HEADER ĐIỀU HƯỚNG CHUNG ================= -->
     <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100">
         <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-            <!-- Logo & Thương Hiệu -->
-            <div class="flex items-center space-x-2.5 cursor-pointer" onclick="navigateTo('landing')">
+            <!-- Logo & Thương Hiệu (Click bình thường sẽ quay về trang chủ) -->
+            <div class="flex items-center space-x-2.5 cursor-pointer" onclick="window.location.hash = ''">
                 <img src="https://i.ibb.co/NgYRHY8R/LOGO-2-01.jpg" alt="Logo Tiệm Giày Cũ" class="h-11 w-auto object-contain rounded-lg shadow-sm">
                 <div>
                     <span class="font-extrabold text-base md:text-lg tracking-tight text-gray-950 block leading-none">TIỆM GIÀY CŨ</span>
@@ -38,11 +38,8 @@
                 </div>
             </div>
             
-            <!-- Phím chuyển trang quản trị & chat -->
+            <!-- Phím chuyển nhanh và Zalo (Đã loại bỏ nút Quản Trị lộ liễu) -->
             <div class="flex items-center space-x-2">
-                <button onclick="navigateTo('admin')" class="text-xs font-bold text-gray-600 hover:text-orange-500 px-3.5 py-2 rounded-xl border border-gray-200 hover:border-orange-500 transition-all flex items-center gap-1 bg-white">
-                    ⚙️ <span class="hidden sm:inline">Trang</span> Quản Trị
-                </button>
                 <a href="https://zalo.me/0378155320" target="_blank" class="bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold px-4 py-2 rounded-xl text-xs transition-all shadow-md flex items-center gap-1.5 hover:scale-105 transform">
                     <span>Zalo Tư Vấn</span>
                 </a>
@@ -164,7 +161,7 @@
             </button>
 
             <div class="text-center space-y-2">
-                <h2 class="text-3xl font-extrabold text-gray-950 tracking-tight">KHO GIÀY SẴN HÀNG THEO SIZE</h2>
+                <h2 class="text-3xl font-extrabold text-gray-950 tracking-tight">CHỌN SIZE CỦA BẠN</h2>
                 <p class="text-gray-500 text-sm">Chọn đúng kích thước chân của bạn để xem trực tiếp danh sách ảnh các mẫu đang có tại shop</p>
             </div>
 
@@ -343,11 +340,27 @@
 
         let selectedFilesData = []; // Mảng chứa base64 các file up
 
-        // Gọi nạp token đã lưu từ local storage
+        // Xử lý nạp trang và check đường dẫn bí mật bằng Hash (#admin)
         window.onload = function() {
             const savedToken = localStorage.getItem('tiemgiay_gh_token');
             if (savedToken) {
                 document.getElementById('gh-token').value = savedToken;
+            }
+
+            // Tự động chuyển hướng vào Admin nếu đường dẫn có đuôi #admin
+            checkUrlHash();
+        }
+
+        // Theo dõi sự thay đổi của đường dẫn Hash trên thanh địa chỉ
+        window.addEventListener('hashchange', checkUrlHash);
+
+        function checkUrlHash() {
+            if (window.location.hash === '#admin') {
+                navigateTo('admin');
+            } else if (window.location.hash === '#catalog') {
+                navigateTo('catalog');
+            } else {
+                navigateTo('landing');
             }
         }
 
