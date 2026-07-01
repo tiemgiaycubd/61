@@ -3,18 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tiệm Giày Cũ Bình Dương | Giày Thể Thao Chất Lượng, Giá Tốt</title>
-    <!-- Tích hợp Tailwind CSS qua CDN -->
+    <title>Tiệm Giày Cũ Bình Dương | Tốc Độ Cao & Tối Giản</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font chữ Google Font hiện đại -->
+    <!-- Google Font Lexend hiện đại -->
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
         body { font-family: 'Lexend', sans-serif; }
-        /* Ẩn thanh cuộn ngang trên mobile nhưng vẫn cuộn được */
+        
+        /* Ẩn thanh cuộn ngang trên điện thoại */
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         
-        /* Hiệu ứng loading nhấp nháy mượt */
+        /* Hiệu ứng loading nhấp nháy êm dịu */
         @keyframes pulse-soft {
             0%, 100% { opacity: 0.6; }
             50% { opacity: 1; }
@@ -24,42 +26,52 @@
 </head>
 <body class="bg-gray-50 text-gray-800 antialiased flex flex-col min-h-screen">
 
-    <!-- 1. HEADER CHUẨN CHỈNH -->
+    <!-- ================= 1. THANH HEADER ĐIỀU HƯỚNG CHUNG ================= -->
     <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100">
-        <div class="max-w-6xl mx-auto px-4 py-2.5 flex justify-between items-center">
-            <div class="flex items-center space-x-2 cursor-pointer" onclick="navigateTo('landing')">
-                <img src="https://i.ibb.co/NgYRHY8R/LOGO-2-01.jpg" alt="Tiệm Giày Cũ Bình Dương Logo" class="h-12 w-auto object-contain rounded-md shadow-sm">
-                <span class="font-extrabold text-lg tracking-tight text-gray-950 hidden sm:inline">TIỆM GIÀY CŨ BÌNH DƯƠNG</span>
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Logo & Thương Hiệu -->
+            <div class="flex items-center space-x-2.5 cursor-pointer" onclick="navigateTo('landing')">
+                <img src="https://i.ibb.co/NgYRHY8R/LOGO-2-01.jpg" alt="Logo Tiệm Giày Cũ" class="h-11 w-auto object-contain rounded-lg shadow-sm">
+                <div>
+                    <span class="font-extrabold text-base md:text-lg tracking-tight text-gray-950 block leading-none">TIỆM GIÀY CŨ</span>
+                    <span class="text-[9px] text-orange-500 font-bold uppercase tracking-widest block mt-0.5">Bình Dương</span>
+                </div>
             </div>
-            <a href="https://zalo.me/0378155320" target="_blank" class="bg-orange-500 hover:bg-orange-600 text-white font-bold px-5 py-2 rounded-full text-sm transition-all shadow-md hover:scale-105 transform">
-                Tư Vấn Qua Zalo
-            </a>
+            
+            <!-- Phím chuyển trang quản trị & chat -->
+            <div class="flex items-center space-x-2">
+                <button onclick="navigateTo('admin')" class="text-xs font-bold text-gray-600 hover:text-orange-500 px-3.5 py-2 rounded-xl border border-gray-200 hover:border-orange-500 transition-all flex items-center gap-1 bg-white">
+                    ⚙️ <span class="hidden sm:inline">Trang</span> Quản Trị
+                </button>
+                <a href="https://zalo.me/0378155320" target="_blank" class="bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold px-4 py-2 rounded-xl text-xs transition-all shadow-md flex items-center gap-1.5 hover:scale-105 transform">
+                    <span>Zalo Tư Vấn</span>
+                </a>
+            </div>
         </div>
     </header>
 
-    <!-- ================= PAGE 1: LANDING PAGE VIEW ================= -->
+    <!-- ================= VIEW 1: TRANG CHỦ LANDING PAGE ================= -->
     <div id="landing-view" class="flex-1 flex flex-col">
         
-        <!-- 2. HERO SECTION CUỐN HÚT -->
+        <!-- HERO BANNER -->
         <section class="relative bg-gradient-to-br from-gray-950 via-gray-900 to-gray-800 text-white py-20 px-4 text-center overflow-hidden flex-1 flex flex-col justify-center">
             <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-orange-500/10 via-transparent to-transparent"></div>
             <div class="relative max-w-3xl mx-auto space-y-8 py-6">
-                <span class="inline-flex items-center gap-1.5 bg-orange-500/20 border border-orange-500/30 text-orange-400 text-xs font-bold uppercase tracking-widest px-3.5 py-1.5 rounded-full">
-                    🔥 SĂN GIÀY HIỆU - GIÁ HỌC SINH SINH VIÊN
+                <span class="inline-flex items-center gap-1.5 bg-orange-500/20 border border-orange-500/30 text-orange-400 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full animate-pulse-soft">
+                    ⚡ GIÀY HIỆU CHÍNH HÃNG - GIÁ HỌC SINH SINH VIÊN
                 </span>
                 <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
-                    Nâng Tầm Bước Chạy <br class="hidden sm:inline" />
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-300">Với Chi Phí Tối Ưu Nhất</span>
+                    TIỆM GIÀY CŨ BÌNH DƯƠNG<br />
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-300">Real & New 2Hand Sneaker</span>
                 </h1>
-                <p class="text-gray-300 text-base md:text-lg max-w-xl mx-auto font-light leading-relaxed">
-                    Chuyên các dòng giày thể thao, bóng rổ, pickleball tuyển chọn nước một. Độ mới cực cao, cam kết ảnh thật, bao check, ship COD toàn quốc.
+                <p class="text-gray-350 text-base md:text-lg max-w-xl mx-auto font-light leading-relaxed">
+                    Chuyên cung cấp các dòng giày thể thao, bóng rổ, chạy bộ tuyển chọn nước một tại Bình Dương với độ mới cao. Cam kết hàng chính hãng (bao check), ảnh thật tự chụp 100% và hỗ trợ ship COD toàn quốc.
                 </p>
                 
-                <!-- NÚT CHUYỂN TRANG CHÍNH: XEM TOÀN BỘ GIÀY TẠI TIỆM -->
-                <div class="pt-6 flex flex-col sm:flex-row gap-4 justify-center items-center">
-                    <button onclick="navigateTo('catalog')" class="w-full sm:w-auto bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-extrabold px-10 py-5 rounded-2xl shadow-xl hover:shadow-orange-500/20 transition-all text-center hover:scale-105 transform flex items-center justify-center gap-3 text-lg">
-                        <span>👟 XEM TOÀN BỘ GIÀY TẠI TIỆM</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div class="pt-4">
+                    <button onclick="navigateTo('catalog')" class="w-full sm:w-auto bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-extrabold px-10 py-5 rounded-2xl shadow-xl hover:shadow-orange-500/20 transition-all text-center hover:scale-105 transform flex items-center justify-center gap-3 text-lg mx-auto">
+                        <span>👟 XEM TOÀN BỘ GIÀY TẠI TIỆM ➔</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                         </svg>
                     </button>
@@ -67,431 +79,605 @@
             </div>
         </section>
 
-        <!-- 3. CHÍNH SÁCH CAM KẾT (Tăng Độ Uy Tín) -->
+        <!-- KHỐI CAM KẾT -->
         <section class="max-w-6xl mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-3 gap-6 -mt-10 relative z-10 w-full">
             <div class="bg-white p-6 rounded-2xl shadow-xl border border-gray-100 flex items-start space-x-4">
-                <div class="p-3.5 bg-orange-50 text-orange-600 rounded-xl text-2xl shrink-0">📸</div>
+                <div class="p-3.5 bg-orange-50 text-orange-600 rounded-xl text-2xl shrink-0">🛡️</div>
                 <div>
-                    <h3 class="font-bold text-gray-900 text-base md:text-lg mb-1">100% Ảnh Thật</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed">Giày sao hình vậy, shop tự chụp chi tiết từng góc cạnh, cam kết không treo đầu dê bán thịt chó.</p>
+                    <h3 class="font-bold text-gray-950 text-base md:text-lg mb-1">100% Cam Kết Chính Hãng</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Nói không với hàng giả, hàng nhái. Shop bao check trọn đời, cam kết hoàn tiền nếu phát hiện hàng không chính hãng.</p>
                 </div>
             </div>
             <div class="bg-white p-6 rounded-2xl shadow-xl border border-gray-100 flex items-start space-x-4">
-                <div class="p-3.5 bg-blue-50 text-blue-600 rounded-xl text-2xl shrink-0">🚚</div>
+                <div class="p-3.5 bg-blue-50 text-blue-600 rounded-xl text-2xl shrink-0">👟</div>
                 <div>
-                    <h3 class="font-bold text-gray-900 text-base md:text-lg mb-1">Kiểm Hàng Trước</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed">Ship COD toàn quốc, khách được quyền mở hộp đi thử, ưng ý vừa chân mới cần trả tiền.</p>
+                    <h3 class="font-bold text-gray-950 text-base md:text-lg mb-1">Kiểm Trả & Thử Giày Thoải Mái</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Nhận hàng, mở hộp và đi thử vừa vặn. Chỉ thanh toán khi bạn hoàn toàn ưng ý về chất lượng.</p>
                 </div>
             </div>
             <div class="bg-white p-6 rounded-2xl shadow-xl border border-gray-100 flex items-start space-x-4">
                 <div class="p-3.5 bg-emerald-50 text-emerald-600 rounded-xl text-2xl shrink-0">🔄</div>
                 <div>
-                    <h3 class="font-bold text-gray-900 text-base md:text-lg mb-1">Đổi Trả Size Linh Hoạt</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed">Nhận hàng về đi không vừa chân? Đừng lo, shop hỗ trợ đổi size tận nhà cực kỳ nhanh chóng.</p>
+                    <h3 class="font-bold text-gray-950 text-base md:text-lg mb-1">Hỗ Trợ Đổi Size Tận Nhà</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Mang không vừa size? Shop hỗ trợ đổi size linh hoạt, nhanh chóng và giao nhận ngay tại nhà của bạn.</p>
                 </div>
             </div>
         </section>
 
-        <!-- 4. KÊNH KẾT NỐI MẠNG XÃ HỘI (Social Links) -->
-        <section class="bg-white border-t border-b border-gray-100 py-16 px-4">
-            <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-2xl md:text-3xl font-extrabold mb-2 text-gray-900">THEO DÕI & LIÊN HỆ TIỆM TRÊN CÁC NỀN TẢNG</h2>
-                <p class="text-gray-500 mb-8 max-w-lg mx-auto text-sm">Cập nhật liên tục các mẫu giày tuyển chọn, video khui hộp và nhiều chương trình săn sale cực hời hàng tuần.</p>
-                
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
-                    <!-- Zalo -->
-                    <a href="https://zalo.me/0378155320" target="_blank" class="flex flex-col items-center p-5 bg-gray-50 rounded-2xl border border-gray-100 hover:border-emerald-500 hover:bg-emerald-50/20 transition-all group">
-                        <span class="text-3xl mb-2.5 group-hover:scale-110 transition-transform">💬</span>
-                        <span class="font-bold text-sm text-gray-800">Zalo Chat</span>
-                    </a>
-                    <!-- Facebook -->
-                    <a href="https://www.facebook.com/tiemgiaycuBinhDuong/" target="_blank" class="flex flex-col items-center p-5 bg-gray-50 rounded-2xl border border-gray-100 hover:border-blue-500 hover:bg-blue-50/20 transition-all group">
-                        <span class="text-3xl mb-2.5 group-hover:scale-110 transition-transform">📘</span>
-                        <span class="font-bold text-sm text-gray-800">Facebook</span>
-                    </a>
-                    <!-- TikTok -->
-                    <a href="https://www.tiktok.com/@tiemgiaycubinhduong?_r=1&_t=ZS-96iMc76gNnh" target="_blank" class="flex flex-col items-center p-5 bg-gray-50 rounded-2xl border border-gray-100 hover:border-gray-950 hover:bg-gray-100 transition-all group">
-                        <span class="text-3xl mb-2.5 group-hover:scale-110 transition-transform">🎵</span>
-                        <span class="font-bold text-sm text-gray-800">TikTok</span>
-                    </a>
-                    <!-- Instagram -->
-                    <a href="https://www.instagram.com/tiemgiaycubinhduong" target="_blank" class="flex flex-col items-center p-5 bg-gray-50 rounded-2xl border border-gray-100 hover:border-pink-500 hover:bg-pink-50/20 transition-all group">
-                        <span class="text-3xl mb-2.5 group-hover:scale-110 transition-transform">📸</span>
-                        <span class="font-bold text-sm text-gray-800">Instagram</span>
-                    </a>
-                    <!-- Threads -->
-                    <a href="https://www.threads.com/@tiemgiaycubinhduong" target="_blank" class="flex flex-col items-center p-5 bg-gray-50 rounded-2xl border border-gray-100 hover:border-gray-950 hover:bg-gray-100 transition-all group col-span-2 sm:col-span-1">
-                        <span class="text-3xl mb-2.5 group-hover:scale-110 transition-transform">🧵</span>
-                        <span class="font-bold text-sm text-gray-800">Threads</span>
-                    </a>
-                </div>
+        <!-- LIÊN KẾT MẠNG XÃ HỘI TỐI ƯU CHO MOBILE -->
+        <section class="max-w-6xl mx-auto px-4 py-16 text-center space-y-6">
+            <h2 class="text-xl md:text-3xl font-black text-gray-950 tracking-tight uppercase leading-snug px-2">
+                GẶP NHAU TRÊN MẠNG XÃ HỘI – TƯ VẤN 24/7
+            </h2>
+            <p class="text-gray-600 text-xs md:text-sm max-w-xl mx-auto leading-relaxed px-4">
+                Kết nối cùng Tiệm Giày Cũ Bình Dương để xem các video review chân thực. Nhắn tin cho tiệm ngay, tụi mình luôn sẵn sàng hỗ trợ bạn !
+            </p>
+            
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 pt-4 px-2">
+                <!-- Zalo Chat - Nổi bật nhất cho Mobile -->
+                <a href="https://zalo.me/0378155320" target="_blank" class="relative flex flex-col items-center p-5 bg-white rounded-2xl border-2 border-emerald-500 hover:bg-emerald-50/20 transition-all group shadow-md col-span-2 sm:col-span-1">
+                    <span class="absolute -top-2.5 bg-emerald-500 text-white text-[8px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full shadow animate-bounce">
+                        ⚡ PHẢN HỒI NHANH
+                    </span>
+                    <span class="text-4xl mb-2 group-hover:scale-110 transition-transform">💬</span>
+                    <span class="font-bold text-sm text-gray-900">Zalo Tư Vấn</span>
+                    <span class="text-[9px] text-emerald-600 font-semibold mt-0.5">Mở chat ngay</span>
+                </a>
+
+                <!-- Facebook -->
+                <a href="https://www.facebook.com/tiemgiaycuBinhDuong/" target="_blank" class="flex flex-col items-center p-5 bg-white rounded-2xl border border-gray-150 hover:border-blue-500 hover:bg-blue-50/10 transition-all group shadow-sm">
+                    <span class="text-3xl mb-2 group-hover:scale-110 transition-transform">📘</span>
+                    <span class="font-bold text-sm text-gray-800">Facebook</span>
+                    <span class="text-[9px] text-gray-400 mt-0.5">Fanpage chính thức</span>
+                </a>
+
+                <!-- TikTok -->
+                <a href="https://www.tiktok.com/@tiemgiaycubinhduong?_r=1&_t=ZS-96iMc76gNnh" target="_blank" class="flex flex-col items-center p-5 bg-white rounded-2xl border border-gray-150 hover:border-gray-950 hover:bg-gray-100 transition-all group shadow-sm">
+                    <span class="text-3xl mb-2 group-hover:scale-110 transition-transform">🎵</span>
+                    <span class="font-bold text-sm text-gray-800">TikTok</span>
+                    <span class="text-[9px] text-gray-400 mt-0.5">Video unboxing</span>
+                </a>
+
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/tiemgiaycubinhduong" target="_blank" class="flex flex-col items-center p-5 bg-white rounded-2xl border border-gray-150 hover:border-pink-500 hover:bg-pink-50/10 transition-all group shadow-sm">
+                    <span class="text-3xl mb-2 group-hover:scale-110 transition-transform">📸</span>
+                    <span class="font-bold text-sm text-gray-800">Instagram</span>
+                    <span class="text-[9px] text-gray-400 mt-0.5">Ảnh cận cảnh</span>
+                </a>
+
+                <!-- Threads -->
+                <a href="https://www.threads.com/@tiemgiaycubinhduong" target="_blank" class="flex flex-col items-center p-5 bg-white rounded-2xl border border-gray-150 hover:border-gray-950 hover:bg-gray-100 transition-all group shadow-sm col-span-2 sm:col-span-1">
+                    <span class="text-3xl mb-2 group-hover:scale-110 transition-transform">🧵</span>
+                    <span class="font-bold text-sm text-gray-800">Threads</span>
+                    <span class="text-[9px] text-gray-400 mt-0.5">Tâm sự hàng ngày</span>
+                </a>
             </div>
         </section>
     </div>
 
-    <!-- ================= PAGE 2: CATALOG / TAB SIZE VIEW ================= -->
-    <div id="catalog-view" class="hidden flex-1 flex flex-col bg-gray-50 py-12 px-4">
-        
+    <!-- ================= VIEW 2: KHO GIÀY THEO SIZE (CATALOG) ================= -->
+    <div id="catalog-view" class="hidden flex-1 bg-gray-50 py-12 px-4">
         <div class="max-w-6xl mx-auto w-full space-y-6">
-            
-            <!-- Nút quay lại trang chủ -->
+            <!-- Quay về -->
             <button onclick="navigateTo('landing')" class="inline-flex items-center gap-2 text-gray-600 hover:text-orange-500 font-bold transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
-                </svg>
-                <span>Quay Lại Trang Chủ</span>
+                ← Quay Lại Trang Chủ
             </button>
 
             <div class="text-center space-y-2">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-950 tracking-tight">KHO GIÀY SẴN HÀNG THEO SIZE</h2>
+                <h2 class="text-3xl font-extrabold text-gray-950 tracking-tight">KHO GIÀY SẴN HÀNG THEO SIZE</h2>
                 <p class="text-gray-500 text-sm">Chọn đúng kích thước chân của bạn để xem trực tiếp danh sách ảnh các mẫu đang có tại shop</p>
             </div>
 
-            <!-- LƯỚI 10 TAB SIZE (36 ĐẾN 45) -->
+            <!-- TABS 10 SIZE (36 ĐẾN 45) -->
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 pt-4">
-                <!-- Size 36 -->
-                <button onclick="selectSize(36)" id="btn-size-36" class="size-card flex flex-col items-center justify-center py-4 bg-white rounded-2xl border-2 border-transparent shadow-sm hover:border-orange-500 transition-all duration-200">
-                    <span class="font-extrabold text-xl text-gray-900">Size 36</span>
-                    <span class="text-[10px] text-gray-400 mt-0.5">Bấm để xem</span>
-                </button>
-                <!-- Size 37 -->
-                <button onclick="selectSize(37)" id="btn-size-37" class="size-card flex flex-col items-center justify-center py-4 bg-white rounded-2xl border-2 border-transparent shadow-sm hover:border-orange-500 transition-all duration-200">
-                    <span class="font-extrabold text-xl text-gray-900">Size 37</span>
-                    <span class="text-[10px] text-gray-400 mt-0.5">Bấm để xem</span>
-                </button>
-                <!-- Size 38 -->
-                <button onclick="selectSize(38)" id="btn-size-38" class="size-card flex flex-col items-center justify-center py-4 bg-white rounded-2xl border-2 border-transparent shadow-sm hover:border-orange-500 transition-all duration-200">
-                    <span class="font-extrabold text-xl text-gray-900">Size 38</span>
-                    <span class="text-[10px] text-gray-400 mt-0.5">Bấm để xem</span>
-                </button>
-                <!-- Size 39 -->
-                <button onclick="selectSize(39)" id="btn-size-39" class="size-card flex flex-col items-center justify-center py-4 bg-white rounded-2xl border-2 border-transparent shadow-sm hover:border-orange-500 transition-all duration-200">
-                    <span class="font-extrabold text-xl text-gray-900">Size 39</span>
-                    <span class="text-[10px] text-gray-400 mt-0.5">Bấm để xem</span>
-                </button>
-                <!-- Size 40 -->
-                <button onclick="selectSize(40)" id="btn-size-40" class="size-card flex flex-col items-center justify-center py-4 bg-white rounded-2xl border-2 border-transparent shadow-sm hover:border-orange-500 transition-all duration-200">
-                    <span class="font-extrabold text-xl text-gray-900">Size 40</span>
-                    <span class="text-[10px] text-gray-400 mt-0.5">Bấm để xem</span>
-                </button>
-                <!-- Size 41 -->
-                <button onclick="selectSize(41)" id="btn-size-41" class="size-card flex flex-col items-center justify-center py-4 bg-white rounded-2xl border-2 border-transparent shadow-sm hover:border-orange-500 transition-all duration-200">
-                    <span class="font-extrabold text-xl text-gray-900">Size 41</span>
-                    <span class="text-[10px] text-gray-400 mt-0.5">Bấm để xem</span>
-                </button>
-                <!-- Size 42 -->
-                <button onclick="selectSize(42)" id="btn-size-42" class="size-card flex flex-col items-center justify-center py-4 bg-white rounded-2xl border-2 border-transparent shadow-sm hover:border-orange-500 transition-all duration-200">
-                    <span class="font-extrabold text-xl text-gray-900">Size 42</span>
-                    <span class="text-[10px] text-gray-400 mt-0.5">Bấm để xem</span>
-                </button>
-                <!-- Size 43 -->
-                <button onclick="selectSize(43)" id="btn-size-43" class="size-card flex flex-col items-center justify-center py-4 bg-white rounded-2xl border-2 border-transparent shadow-sm hover:border-orange-500 transition-all duration-200">
-                    <span class="font-extrabold text-xl text-gray-900">Size 43</span>
-                    <span class="text-[10px] text-gray-400 mt-0.5">Bấm để xem</span>
-                </button>
-                <!-- Size 44 -->
-                <button onclick="selectSize(44)" id="btn-size-44" class="size-card flex flex-col items-center justify-center py-4 bg-white rounded-2xl border-2 border-transparent shadow-sm hover:border-orange-500 transition-all duration-200">
-                    <span class="font-extrabold text-xl text-gray-900">Size 44</span>
-                    <span class="text-[10px] text-gray-400 mt-0.5">Bấm để xem</span>
-                </button>
-                <!-- Size 45 -->
-                <button onclick="selectSize(45)" id="btn-size-45" class="size-card flex flex-col items-center justify-center py-4 bg-white rounded-2xl border-2 border-transparent shadow-sm hover:border-orange-500 transition-all duration-200">
-                    <span class="font-extrabold text-xl text-gray-900">Size 45</span>
-                    <span class="text-[10px] text-gray-400 mt-0.5">Bấm để xem</span>
-                </button>
+                <script>
+                    for(let s=36; s<=45; s++) {
+                        document.write(`
+                            <button onclick="selectSize(${s})" id="btn-size-${s}" class="size-card flex flex-col items-center justify-center py-4 bg-white rounded-2xl border-2 border-transparent shadow-sm hover:border-orange-500 transition-all duration-200">
+                                <span class="font-extrabold text-xl text-gray-900">Size ${s}</span>
+                                <span class="text-[10px] text-gray-400 mt-0.5">Bấm để xem</span>
+                            </button>
+                        `);
+                    }
+                </script>
             </div>
 
-            <!-- KHU VỰC HIỂN THỊ ẢNH SẢN PHẨM TRỰC TIẾP -->
+            <!-- KHU VỰC HIỂN THỊ DANH SÁCH GIÀY TRỰC TIẾP -->
             <div class="pt-6">
-                <!-- Tiêu đề của Size đang chọn -->
                 <div class="flex items-center justify-between border-b border-gray-200 pb-3 mb-6">
                     <h3 class="text-xl font-bold text-gray-900" id="current-size-title">Danh sách giày Size 36</h3>
-                    <a id="size-external-link" href="#" target="_blank" class="text-xs text-orange-500 font-bold hover:underline hidden">Xem album gốc ImgBB ➔</a>
+                    <span class="text-xs text-orange-500 font-bold animate-pulse-soft">💡 Nhấn vào ảnh để xem chi tiết & chốt qua Zalo</span>
                 </div>
-
-                <!-- Lưới hiển thị các thẻ giày trực tiếp -->
-                <div id="product-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-                    <!-- Javascript sẽ tự động thêm danh sách ảnh và thông tin giày vào đây -->
+                <!-- Lưới chứa các thẻ giày tối giản chỉ chừa ảnh -->
+                <div id="product-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
+                    <!-- JS sẽ tự động đổ dữ liệu trực quan vào đây -->
                 </div>
             </div>
-
         </div>
     </div>
 
-    <!-- ================= LIGHTBOX MODAL: XEM ẢNH LỚN & ĐẶT HÀNG ================= -->
-    <div id="lightbox-modal" class="fixed inset-0 bg-black/90 z-[100] hidden flex-col justify-center items-center p-4">
-        <!-- Nút đóng góc trên bên phải -->
+    <!-- ================= VIEW 3: TRANG QUẢN TRỊ ĐỘC LẬP (ADMIN) ================= -->
+    <div id="admin-view" class="hidden flex-1 bg-gray-100 py-12 px-4">
+        <div class="max-w-2xl mx-auto bg-white p-6 md:p-8 rounded-3xl shadow-xl border border-gray-100 space-y-6">
+            
+            <div class="flex justify-between items-center border-b border-gray-200 pb-4">
+                <div>
+                    <h2 class="text-2xl font-extrabold text-gray-950">⚙️ HỆ THỐNG QUẢN TRỊ KHO</h2>
+                    <p class="text-xs text-gray-500 mt-1">Cấu hình đẩy ảnh trực tiếp vào thư mục size trên GitHub</p>
+                </div>
+                <button onclick="navigateTo('landing')" class="text-xs font-bold bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-xl transition-all">
+                    Thoát
+                </button>
+            </div>
+
+            <!-- BẢNG CẤU HÌNH TOKEN -->
+            <div class="p-5 bg-orange-50/50 rounded-2xl border border-orange-100 space-y-4">
+                <h3 class="font-bold text-orange-800 flex items-center gap-1.5 text-sm">
+                    🔒 CẤU HÌNH KẾT NỐI AN TOÀN (Lưu trong Local browser của bạn)
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-600 mb-1">GitHub Account Name</label>
+                        <input type="text" id="gh-user" class="w-full text-sm px-4 py-2.5 rounded-xl border border-gray-200 bg-gray-100 font-semibold" value="tiemgiaycubd" readonly>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-600 mb-1">Repository Name</label>
+                        <input type="text" id="gh-repo" class="w-full text-sm px-4 py-2.5 rounded-xl border border-gray-200 bg-gray-100 font-semibold" value="61" readonly>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-600 mb-1">GitHub Personal Access Token (PAT)</label>
+                    <input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" class="w-full text-sm px-4 py-3 rounded-xl border border-gray-200 outline-none focus:border-orange-500">
+                </div>
+                <div class="flex justify-between items-center pt-2 gap-3">
+                    <span class="text-[10px] text-gray-400 leading-snug">🔒 Token chỉ lưu tại LocalStorage của trình duyệt này. Không ai khác có thể xem.</span>
+                    <button onclick="saveGithubConfig()" class="bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 py-2.5 rounded-xl text-xs transition-all shadow-md">
+                        Lưu Cấu Hình
+                    </button>
+                </div>
+            </div>
+
+            <!-- TẢI ẢNH MULTI-UPLOAD -->
+            <div class="space-y-4">
+                <h3 class="font-bold text-gray-900 text-sm">🚀 TẢI ẢNH GIÀY MỚI LÊN THƯ MỤC SIZE</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <!-- Chọn Size -->
+                    <div class="md:col-span-1">
+                        <label class="block text-xs font-bold text-gray-600 mb-1.5">Chọn Thư Mục Size:</label>
+                        <select id="admin-size-select" class="w-full text-sm px-4 py-3.5 rounded-xl border border-gray-200 font-bold text-gray-900 bg-gray-50">
+                            <script>
+                                for(let i=36; i<=45; i++) {
+                                    document.write(`<option value="${i}">Thư mục Size ${i}</option>`);
+                                }
+                            </script>
+                        </select>
+                    </div>
+                    <!-- Chọn nhiều file -->
+                    <div class="md:col-span-2">
+                        <label class="block text-xs font-bold text-gray-600 mb-1.5">Chọn tập tin ảnh (Chọn cùng lúc nhiều ảnh):</label>
+                        <input type="file" id="admin-file-input" multiple accept="image/*" onchange="handleFileSelect(this)" class="w-full text-sm px-4 py-2.5 rounded-xl border border-gray-200 bg-gray-50 file:mr-3 file:py-1 file:px-2.5 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-orange-100 file:text-orange-700 hover:file:bg-orange-200">
+                    </div>
+                </div>
+
+                <!-- Bảng hiển thị danh sách ảnh đợi up -->
+                <div id="preview-list-container" class="hidden border border-gray-200 rounded-2xl p-4 bg-gray-50 space-y-3">
+                    <div class="flex justify-between items-center border-b border-gray-200 pb-2">
+                        <span class="text-xs font-bold text-gray-600">DANH SÁCH ẢNH CHUẨN BỊ LÊN KHO (<span id="preview-count">0</span>):</span>
+                        <button onclick="clearSelectedFiles()" class="text-[10px] font-bold text-red-500 hover:underline">Xóa tất cả</button>
+                    </div>
+                    <div id="preview-thumbnails-grid" class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3 max-h-56 overflow-y-auto"></div>
+                </div>
+
+                <!-- Thanh tiến trình tải lên -->
+                <div id="upload-progress-container" class="hidden space-y-1.5">
+                    <div class="flex justify-between text-xs font-bold text-gray-700">
+                        <span id="progress-status-text">Đang tải lên...</span>
+                        <span id="progress-percentage">0%</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+                        <div id="progress-bar-fill" class="bg-gradient-to-r from-orange-500 to-amber-500 h-full transition-all duration-300" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <!-- Nút Submit Upload -->
+                <button onclick="startBatchUpload()" id="start-upload-btn" class="w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-extrabold py-4 rounded-2xl shadow-lg text-sm transition-all flex items-center justify-center gap-2">
+                    <span>🚀 BẮT ĐẦU ĐẨY LÊN GITHUB</span>
+                </button>
+            </div>
+
+            <!-- LOG STATUS -->
+            <div id="upload-log" class="hidden p-4 rounded-2xl border border-gray-250 bg-gray-950 text-white font-mono text-[11px] h-36 overflow-y-auto space-y-1"></div>
+        </div>
+    </div>
+
+    <!-- ================= LIGHTBOX MODAL (TỐI GIẢN CHỈ CHỨA ẢNH VÀ NÚT CHỐT ZALO) ================= -->
+    <div id="lightbox-modal" class="fixed inset-0 bg-black/95 z-[100] hidden flex-col justify-center items-center p-4">
+        <!-- Nút đóng -->
         <button onclick="closeLightbox()" class="absolute top-4 right-4 text-white hover:text-orange-500 bg-white/10 hover:bg-white/20 p-2.5 rounded-full transition-all text-xl">
             ✕
         </button>
-        <!-- Khung ảnh phóng to -->
-        <div class="max-w-3xl w-full flex flex-col items-center space-y-4">
-            <img id="lightbox-img" src="" alt="Zoomed Shoe" class="max-h-[75vh] max-w-full object-contain rounded-xl shadow-2xl">
-            <!-- Thông tin chi tiết bên dưới ảnh lớn -->
-            <div class="text-center text-white space-y-2 w-full px-4">
-                <h4 id="lightbox-title" class="text-xl font-bold">Tên Giày</h4>
-                <p id="lightbox-price" class="text-orange-400 font-bold text-lg">9xx.000 đ</p>
-                <!-- Nút chốt ngay qua Zalo -->
-                <div class="pt-2">
-                    <a id="lightbox-zalo-btn" href="#" target="_blank" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold px-8 py-3 rounded-full shadow-lg transition-all transform hover:scale-105 text-sm">
-                        💬 Nhắn Zalo Chốt Đôi Này Ngay
+        <!-- Ảnh & Nút hỏi mua tối giản -->
+        <div class="max-w-3xl w-full flex flex-col items-center space-y-5">
+            <img id="lightbox-img" src="" alt="Sneaker Zoom" class="max-h-[80vh] max-w-full object-contain rounded-2xl shadow-2xl border border-gray-800">
+            <div class="text-center w-full px-4">
+                <!-- Nút chốt qua Zalo -->
+                <div class="pt-1">
+                    <a id="lightbox-zalo-btn" href="#" target="_blank" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold px-8 py-3.5 rounded-full shadow-xl transition-all hover:scale-105 transform text-sm">
+                        💬 Nhắn Zalo Hỏi Đôi Này Ngay
                     </a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- 5. FOOTER PHÙ HỢP THƯƠNG HIỆU -->
-    <footer class="bg-gray-950 text-gray-400 py-12 mt-auto border-t border-gray-900">
-        <div class="max-w-6xl mx-auto px-4 text-center space-y-4">
-            <div class="flex justify-center items-center space-x-3">
-                <img src="https://i.ibb.co/NgYRHY8R/LOGO-2-01.jpg" alt="Tiệm Giày Cũ Bình Dương Logo" class="h-10 w-auto rounded-md filter brightness-90">
-                <p class="font-extrabold text-white text-lg tracking-wider">TIỆM GIÀY CŨ BÌNH DUƠNG</p>
+    <!-- HỘP THÔNG BÁO TOAST MỀM MẠI (THAY THẾ TOÀN BỘ ALERT) -->
+    <div id="custom-toast" class="fixed bottom-6 right-6 z-[200] hidden bg-gray-900 text-white px-6 py-4 rounded-2xl shadow-2xl border border-gray-700 max-w-sm flex items-center space-x-3 transition-all transform translate-y-10 opacity-0">
+        <span id="toast-icon" class="text-2xl">💡</span>
+        <span id="toast-text" class="text-sm font-semibold">Thông báo thành công!</span>
+    </div>
+
+    <!-- FOOTER CHUNG -->
+    <footer class="bg-gray-950 text-gray-500 py-10 mt-auto border-t border-gray-900">
+        <div class="max-w-6xl mx-auto px-4 text-center space-y-3.5">
+            <div class="flex justify-center items-center space-x-2.5">
+                <img src="https://i.ibb.co/NgYRHY8R/LOGO-2-01.jpg" alt="Logo" class="h-9 w-auto rounded-md filter brightness-90">
+                <span class="font-extrabold text-white tracking-wider text-base">TIỆM GIÀY CŨ BÌNH DƯƠNG</span>
             </div>
-            <p class="text-sm max-w-md mx-auto text-gray-400 font-light leading-relaxed">
-                Chuyên sỉ & lẻ các dòng giày thể thao, bóng rổ, chạy bộ tuyển chọn chất lượng cao tại Bình Dương. Giá cả cạnh tranh phù hợp với học sinh, sinh viên.
+            <p class="text-xs max-w-md mx-auto leading-relaxed text-gray-400 font-light">
+                Kho giày thể thao, bóng rổ, chạy bộ nước một hàng đầu tại Bình Dương. Phục vụ chu đáo, chất lượng cam kết tuyệt đối.
             </p>
-            <div class="text-xs pt-6 border-t border-gray-900 text-gray-650">
-                &copy; 2026 Tiệm Giày Cũ Bình Dương. All rights reserved.
+            <div class="text-[10px] text-gray-600 pt-4 border-t border-gray-900 flex flex-col sm:flex-row justify-between items-center gap-2">
+                <span>&copy; 2026 Tiệm Giày Cũ Bình Dương. All rights reserved.</span>
+                <button onclick="navigateTo('admin')" class="hover:text-orange-500 font-semibold text-[9px] uppercase tracking-wider">Hệ Thống Admin Điều Hành</button>
             </div>
         </div>
     </footer>
 
-    <!-- JAVASCRIPT ĐIỀU HƯỚNG & XỬ LÝ KHO GIÀY TRỰC TIẾP -->
+    <!-- JAVASCRIPT ĐIỀU PHỐI TOÀN TRANG -->
     <script>
-        // 1. CẤU HÌNH ALBUM IMGBB - DÙNG CHO PHƯƠNG ÁN TỰ ĐỘNG ĐỒNG BỘ
-        const imgbbAlbums = {
-            36: "https://ibb.co/album/B45gQ8", // Album size 36 của bạn
-            37: "",
-            38: "",
-            39: "",
-            40: "",
-            41: "",
-            42: "",
-            43: "",
-            44: "",
-            45: ""
-        };
+        // CẤU HÌNH GITHUB CỐ ĐỊNH CỦA BẠN
+        const GITHUB_USER = "tiemgiaycubd";
+        const GITHUB_REPO = "61";
+        const BRANCH = "main";
 
-        const DEFAULT_PRICE = "Giá tại tiệm (Inbox)";
-        const DEFAULT_CONDITION = "Độ mới 95% - 98%";
+        let selectedFilesData = []; // Mảng chứa base64 các file up
 
-        // 2. Hàm chuyển đổi View/Trang (SPA)
+        // Gọi nạp token đã lưu từ local storage
+        window.onload = function() {
+            const savedToken = localStorage.getItem('tiemgiay_gh_token');
+            if (savedToken) {
+                document.getElementById('gh-token').value = savedToken;
+            }
+        }
+
+        // Hiện thông báo toast
+        function showToast(text, icon = '💡') {
+            const toast = document.getElementById('custom-toast');
+            document.getElementById('toast-text').innerText = text;
+            document.getElementById('toast-icon').innerText = icon;
+            
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.remove('translate-y-10', 'opacity-0');
+            }, 50);
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-10', 'opacity-0');
+                setTimeout(() => toast.classList.add('hidden'), 500);
+            }, 3500);
+        }
+
+        // Điều khiển định tuyến trang SPA
         function navigateTo(viewId) {
             window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            document.getElementById('landing-view').classList.add('hidden');
+            document.getElementById('catalog-view').classList.add('hidden');
+            document.getElementById('admin-view').classList.add('hidden');
 
             if (viewId === 'landing') {
                 document.getElementById('landing-view').classList.remove('hidden');
-                document.getElementById('catalog-view').classList.add('hidden');
             } else if (viewId === 'catalog') {
-                document.getElementById('landing-view').classList.add('hidden');
                 document.getElementById('catalog-view').classList.remove('hidden');
-                
-                // Mặc định chọn trước Size 36 để hiển thị
-                selectSize(36);
+                selectSize(36); // Mặc định mở size 36 trước
+            } else if (viewId === 'admin') {
+                document.getElementById('admin-view').classList.remove('hidden');
             }
         }
 
-        // 3. Công nghệ quét mã HTML công khai của album ImgBB và tự động lấy ra tất cả link ảnh
-        async function fetchImagesFromAlbum(albumUrl) {
-            if (!albumUrl) return [];
-            
-            try {
-                // Sử dụng AllOrigins làm CORS proxy miễn phí và an toàn
-                const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(albumUrl)}`;
-                const response = await fetch(proxyUrl);
-                if (!response.ok) return [];
-                const htmlText = await response.text();
-
-                // Làm sạch các ký tự escape gạch chéo ngược lỡ có trong chuỗi javascript của ImgBB
-                const cleanHtml = htmlText.replace(/\\/g, '');
-
-                // Tìm tất cả các liên kết ảnh trực tiếp của ImgBB có dạng i.ibb.co
-                const regex = /https:\/\/i\.ibb\.co\/[a-zA-Z0-9]+\/[a-zA-Z0-9-_.]+\.(?:jpe?g|png|webp)/ig;
-                const matches = cleanHtml.match(regex) || [];
-                
-                // Loại bỏ các liên kết bị lặp
-                let uniqueUrls = [...new Set(matches)];
-
-                // Loại bỏ logo thương hiệu ra khỏi danh sách hiển thị nếu bị quét trúng
-                uniqueUrls = uniqueUrls.filter(url => !url.includes('NgYRHY8R/LOGO-2-01'));
-
-                // Trả về danh sách sản phẩm giày được tạo lập tự động
-                return uniqueUrls.map((directImgUrl, index) => ({
-                    name: `Giày Tuyển Chọn Size Mẫu #${index + 1}`,
-                    price: DEFAULT_PRICE,
-                    condition: DEFAULT_CONDITION,
-                    img: directImgUrl
-                }));
-
-            } catch (error) {
-                console.error("Lỗi khi đồng bộ Album từ ImgBB:", error);
-                return [];
-            }
-        }
-
-        // 4. Hàm xử lý khi khách click chọn Size
+        // Nạp và quét ảnh từ thư mục size trên GitHub API (ĐÃ SỬA LỖI CÚ PHÁP)
         async function selectSize(size) {
-            // Thay đổi trạng thái hiển thị của nút Tab Size hoạt động
+            // Đổi màu tab active
             document.querySelectorAll('.size-card').forEach(card => {
                 card.classList.remove('border-orange-500', 'bg-orange-50/45', 'scale-105');
                 card.classList.add('border-transparent', 'bg-white');
             });
-
             const activeCard = document.getElementById(`btn-size-${size}`);
-            if (activeCard) {
-                activeCard.classList.remove('border-transparent', 'bg-white');
-                activeCard.classList.add('border-orange-500', 'bg-orange-50/45', 'scale-105');
-            }
+            if (activeCard) activeCard.classList.add('border-orange-500', 'bg-orange-50/45', 'scale-105');
 
-            // Đổi tiêu đề hiển thị
             document.getElementById('current-size-title').innerText = `Danh sách giày Size ${size}`;
-
-            // Cấu hình hiển thị link xem album ngoài
-            const extLink = document.getElementById('size-external-link');
-            if (imgbbAlbums[size]) {
-                extLink.href = imgbbAlbums[size];
-                extLink.classList.remove('hidden');
-            } else {
-                extLink.classList.add('hidden');
-            }
-
             const grid = document.getElementById('product-grid');
             
-            // Hiện trạng thái chờ đồng bộ dữ liệu
-            grid.innerHTML = `
-                <div class="col-span-full text-center py-16 flex flex-col items-center justify-center space-y-3">
-                    <svg class="animate-spin h-8 w-8 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    <p class="text-gray-500 text-sm font-medium animate-pulse-soft">Đang đồng bộ trực tiếp kho ảnh từ Album ImgBB...</p>
-                </div>
-            `;
+            // Hiển thị trạng thái đang đọc
+            grid.innerHTML = `<div class="col-span-full text-center py-12 text-gray-400 font-semibold animate-pulse-soft">Đang tìm kiếm kho ảnh Size ${size} từ GitHub...</div>`;
 
-            // Gọi tiến trình quét ảnh từ Album ImgBB
-            const albumUrl = imgbbAlbums[size];
-            const products = await fetchImagesFromAlbum(albumUrl);
+            try {
+                // Gọi API công khai của GitHub lấy file trong thư mục assets/sizeXX
+                const apiUrl = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/assets/size${size}?ref=${BRANCH}`;
+                
+                // Đọc token đã lưu của admin để tránh bị giới hạn lượt gửi request
+                const adminToken = localStorage.getItem('tiemgiay_gh_token') || "";
+                const headers = {};
+                if (adminToken) headers['Authorization'] = `token ${adminToken}`;
 
-            grid.innerHTML = ''; // Clear giao diện loading
+                const response = await fetch(apiUrl, { headers });
+                
+                if (response.ok) {
+                    const files = await response.json();
+                    const imageFiles = files.filter(file => /\.(jpg|jpeg|png|webp|gif)$/i.test(file.name));
 
-            if (products.length > 0) {
-                products.forEach((shoe, index) => {
-                    const uniqueId = `img-resolved-${size}-${index}`;
-                    const shoeCard = `
-                        <div class="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm flex flex-col justify-between group hover:shadow-lg transition-all duration-300">
-                            <div class="relative cursor-pointer overflow-hidden" onclick="triggerLightbox('${uniqueId}', '${shoe.name}', '${shoe.price}', ${size})">
-                                <!-- Trình loading ảnh nhỏ -->
-                                <div id="loader-${uniqueId}" class="absolute inset-0 bg-gray-50 flex flex-col justify-center items-center">
-                                    <span class="text-[10px] text-gray-400 font-semibold animate-pulse-soft">Đang tải ảnh...</span>
+                    grid.innerHTML = ''; // Reset khung
+
+                    if (imageFiles.length === 0) {
+                        showEmptyMessage(grid, size);
+                        return;
+                    }
+
+                    imageFiles.forEach((file, index) => {
+                        const rawUrl = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/${BRANCH}/${file.path}`;
+                        const uniqueId = `img-client-${size}-${index}`;
+                        
+                        grid.innerHTML += `
+                            <div class="relative cursor-pointer overflow-hidden aspect-square bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 group" onclick="triggerLightbox('${rawUrl}', ${size})">
+                                <div id="loader-${uniqueId}" class="absolute inset-0 bg-gray-50 flex justify-center items-center">
+                                    <span class="text-[9px] text-gray-400 font-bold animate-pulse-soft">Đang tải...</span>
                                 </div>
-                                <!-- Ảnh sản phẩm -->
-                                <img id="${uniqueId}" src="${shoe.img}" alt="${shoe.name}" class="w-full h-40 sm:h-52 object-cover opacity-0 transition-opacity duration-300 group-hover:scale-105" onload="onImageLoaded('${uniqueId}')" onerror="handleImageError(this)">
-                                <!-- Tag độ mới -->
-                                <span class="absolute top-2 left-2 bg-orange-500 text-white text-[10px] font-extrabold px-2 py-1 rounded-md shadow">
-                                    ${shoe.condition}
-                                </span>
-                            </div>
-                            <div class="p-4 flex-1 flex flex-col justify-between">
-                                <div class="space-y-1">
-                                    <h4 class="font-bold text-gray-900 text-sm md:text-base line-clamp-2 leading-tight">${shoe.name}</h4>
-                                    <p class="text-xs text-gray-400">Size chân: ${size}</p>
-                                </div>
-                                <div class="pt-3">
-                                    <p class="text-orange-500 font-extrabold text-base md:text-lg">${shoe.price}</p>
-                                    <div class="grid grid-cols-2 gap-2 mt-3">
-                                        <button onclick="triggerLightbox('${uniqueId}', '${shoe.name}', '${shoe.price}', ${size})" class="text-center bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold py-2 rounded-lg text-xs transition-colors">
-                                            Xem Ảnh To
-                                        </button>
-                                        <a href="https://zalo.me/0378155320?text=Shop tư vấn giúp mình mẫu giày này còn sẵn size ${size} không nhé: ${encodeURIComponent(shoe.img)}" target="_blank" class="text-center bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 rounded-lg text-xs transition-colors">
-                                            Zalo Mua
-                                        </a>
-                                    </div>
+                                <img id="${uniqueId}" src="${rawUrl}" alt="" class="w-full h-full object-cover opacity-0 transition-opacity duration-300 group-hover:scale-105" onload="onImageLoaded('${uniqueId}')" onerror="handleImageError(this)">
+                                <!-- Giao diện phủ mờ khi rê chuột vào -->
+                                <div class="absolute inset-0 bg-black/45 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <span class="bg-white/95 text-gray-900 font-extrabold text-[11px] px-3.5 py-2 rounded-xl shadow-md">🔍 Xem ảnh lớn</span>
                                 </div>
                             </div>
-                        </div>
-                    `;
-                    grid.innerHTML += shoeCard;
-                });
-            } else {
-                // Nếu chưa có sản phẩm nào cho size đó hoặc chưa có link album
-                grid.innerHTML = `
-                    <div class="col-span-full bg-white rounded-2xl p-12 text-center border border-gray-100 shadow-sm space-y-4">
-                        <div class="text-5xl">👟</div>
-                        <div class="space-y-1">
-                            <h4 class="font-bold text-lg text-gray-950">Đang cập nhật thêm mẫu cho Size ${size}</h4>
-                            <p class="text-gray-500 text-sm max-w-sm mx-auto">Mẫu mới size này đang được tuyển chọn và chụp ảnh. Hãy liên hệ Zalo shop để nhận ngay các ảnh mẫu sẵn có tại kho chưa kịp đăng nhé!</p>
-                        </div>
-                        <div class="pt-2">
-                            <a href="https://zalo.me/0378155320?text=Shop gửi cho tôi các mẫu giày Size ${size} đang sẵn hàng nhé!" target="_blank" class="bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 py-3 rounded-xl text-sm transition-all shadow-md inline-block">
-                                Nhắn Zalo Nhận Ảnh Size ${size} Ngay
-                            </a>
-                        </div>
-                    </div>
-                `;
+                        `;
+                    });
+                } else {
+                    // Nếu lỗi API (thư mục chưa có hoặc trống), hiển thị luôn thông báo trống
+                    showEmptyMessage(grid, size);
+                }
+            } catch (err) {
+                showEmptyMessage(grid, size);
             }
         }
 
-        // Hiện ảnh mượt mà sau khi tải xong
+        // Khi ảnh đã tải xong, hiện mượt mà
         function onImageLoaded(imgId) {
             const img = document.getElementById(imgId);
             const loader = document.getElementById(`loader-${imgId}`);
-            if (img) {
-                img.classList.remove('opacity-0');
-            }
-            if (loader) {
-                loader.classList.add('hidden');
-            }
+            if (img) img.classList.remove('opacity-0');
+            if (loader) loader.classList.add('hidden');
         }
 
-        // Tự động xử lý khi ảnh bị lỗi
+        // Báo lỗi link ảnh
         function handleImageError(imgElement) {
-            imgElement.src = 'https://placehold.co/400x300/fee2e2/ef4444?text=Lỗi+Liên+Kết+Ảnh';
-            const loaderId = imgElement.id ? `loader-${imgElement.id}` : '';
-            const loader = document.getElementById(loaderId);
-            if (loader) {
-                loader.classList.add('hidden');
-            }
+            imgElement.src = 'https://placehold.co/400x400/fee2e2/ef4444?text=Lỗi+Ảnh+GitHub';
+            const loader = document.getElementById(`loader-${imgElement.id}`);
+            if (loader) loader.classList.add('hidden');
             imgElement.classList.remove('opacity-0');
         }
 
-        // 5. Các hàm đóng/mở Lightbox phóng to ảnh sản phẩm
-        function triggerLightbox(imgId, title, price, size) {
-            const resolvedImg = document.getElementById(imgId);
-            const lightboxImg = document.getElementById('lightbox-img');
+        // Hiển thị tin nhắn thông báo khi chưa có ảnh trong folder size
+        function showEmptyMessage(gridElement, size) {
+            gridElement.innerHTML = `
+                <div class="col-span-full bg-white rounded-3xl p-12 text-center border border-gray-100 shadow-sm space-y-4">
+                    <div class="text-5xl">👟</div>
+                    <div class="space-y-1">
+                        <h4 class="font-bold text-lg text-gray-950">Mẫu mới Size ${size} đang cập nhật</h4>
+                        <p class="text-gray-500 text-sm max-w-sm mx-auto">Thư mục <code class="bg-gray-100 px-1.5 py-0.5 rounded text-red-500 font-mono text-xs">assets/size${size}</code> trên GitHub hiện trống hoặc chưa được kết nối.</p>
+                    </div>
+                    <div class="pt-2">
+                        <a href="https://zalo.me/0378155320" target="_blank" class="bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 py-3 rounded-xl text-sm transition-all shadow-md inline-block">
+                            Nhận Ảnh Mẫu Size ${size} Qua Zalo
+                        </a>
+                    </div>
+                </div>
+            `;
+        }
+
+        // ĐÓNG MỞ LIGHTBOX XEM CHI TIẾT (Đã loại bỏ hoàn toàn text/giá theo ý bạn)
+        function triggerLightbox(imgUrl, size) {
+            document.getElementById('lightbox-img').src = imgUrl;
             
-            if (resolvedImg && resolvedImg.src) {
-                lightboxImg.src = resolvedImg.src;
-            } else {
-                lightboxImg.src = 'https://placehold.co/800x600/f3f4f6/374151?text=Đang+Tải+Ảnh';
-            }
-            
-            document.getElementById('lightbox-title').innerText = title;
-            document.getElementById('lightbox-price').innerText = price;
-            
-            // Tối ưu tin nhắn gửi sang zalo khi click đặt mua đôi này
-            const encodedText = encodeURIComponent(`Shop kiểm tra giúp mình mẫu giày này có còn sẵn size ${size} không nhé: ${lightboxImg.src}`);
+            const encodedText = encodeURIComponent(`Shop ơi check giúp mình mẫu giày này size ${size} còn hàng không nhé: ${imgUrl}`);
             document.getElementById('lightbox-zalo-btn').href = `https://zalo.me/0378155320?text=${encodedText}`;
 
             document.getElementById('lightbox-modal').classList.remove('hidden');
             document.getElementById('lightbox-modal').classList.add('flex');
-            document.body.style.overflow = 'hidden'; // Ngăn cuộn trang sau nền
+            document.body.style.overflow = 'hidden';
         }
 
         function closeLightbox() {
             document.getElementById('lightbox-modal').classList.add('hidden');
             document.getElementById('lightbox-modal').classList.remove('flex');
-            document.body.style.overflow = 'auto'; // Cho phép cuộn trang lại
+            document.body.style.overflow = 'auto';
         }
 
-        // Đóng modal khi click ra vùng ngoài ảnh lớn
         document.getElementById('lightbox-modal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeLightbox();
-            }
+            if (e.target === this) closeLightbox();
         });
+
+
+        // ================= NGHIỆP VỤ UP NHIỀU FILE TRANG QUẢN TRỊ =================
+        
+        // Lưu GitHub Token bảo mật
+        function saveGithubConfig() {
+            const token = document.getElementById('gh-token').value.trim();
+            if (!token) {
+                showToast("Vui lòng nhập Token GitHub!", "❌");
+                return;
+            }
+            localStorage.setItem('tiemgiay_gh_token', token);
+            showToast("Đã lưu token an toàn trên trình duyệt!", "✅");
+        }
+
+        // Quét và xử lý khi admin chọn các file ảnh
+        function handleFileSelect(input) {
+            const files = input.files;
+            if (files.length === 0) return;
+
+            const grid = document.getElementById('preview-thumbnails-grid');
+            const container = document.getElementById('preview-list-container');
+            
+            container.classList.remove('hidden');
+
+            for (let file of files) {
+                if (!file.type.startsWith('image/')) continue;
+
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const base64Content = e.target.result.split(',')[1];
+                    const fileObj = {
+                        name: file.name,
+                        sizeKB: Math.round(file.size / 1024),
+                        base64: base64Content,
+                        tempId: `file-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`
+                    };
+
+                    selectedFilesData.push(fileObj);
+                    
+                    grid.innerHTML += `
+                        <div id="${fileObj.tempId}" class="relative bg-white border border-gray-200 p-1.5 rounded-xl flex flex-col items-center shadow-sm w-full">
+                            <img src="${e.target.result}" class="w-full aspect-square object-cover rounded-lg">
+                            <span class="text-[9px] text-gray-400 mt-1 truncate max-w-full">${fileObj.sizeKB} KB</span>
+                            <button onclick="removeSelectedFile('${fileObj.tempId}')" class="absolute -top-1.5 -right-1.5 bg-red-500 hover:bg-red-600 text-white rounded-full text-[10px] w-5 h-5 flex items-center justify-center font-bold shadow-md">✕</button>
+                        </div>
+                    `;
+                    
+                    document.getElementById('preview-count').innerText = selectedFilesData.length;
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Xóa nhanh một file lỡ chọn nhầm khỏi hàng chờ
+        function removeSelectedFile(tempId) {
+            selectedFilesData = selectedFilesData.filter(item => item.tempId !== tempId);
+            const thumb = document.getElementById(tempId);
+            if (thumb) thumb.remove();
+
+            document.getElementById('preview-count').innerText = selectedFilesData.length;
+            if (selectedFilesData.length === 0) {
+                document.getElementById('preview-list-container').classList.add('hidden');
+            }
+        }
+
+        // Xóa sạch toàn bộ hàng chờ
+        function clearSelectedFiles() {
+            selectedFilesData = [];
+            document.getElementById('preview-thumbnails-grid').innerHTML = '';
+            document.getElementById('preview-list-container').classList.add('hidden');
+            document.getElementById('admin-file-input').value = '';
+            document.getElementById('preview-count').innerText = '0';
+        }
+
+        // BẮT ĐẦU QUY TRÌNH UPLOAD HÀNG LOẠT LÊN GITHUB
+        async function startBatchUpload() {
+            const token = localStorage.getItem('tiemgiay_gh_token');
+            if (!token) {
+                showToast("Vui lòng lưu GitHub Token cấu hình phía trên trước khi tải ảnh!", "❌");
+                return;
+            }
+
+            if (selectedFilesData.length === 0) {
+                showToast("Bạn chưa chọn ảnh nào để tải lên!", "❌");
+                return;
+            }
+
+            const sizeFolder = document.getElementById('admin-size-select').value;
+            const progressContainer = document.getElementById('upload-progress-container');
+            const fill = document.getElementById('progress-bar-fill');
+            const percentText = document.getElementById('progress-percentage');
+            const statusText = document.getElementById('progress-status-text');
+            const logBox = document.getElementById('upload-log');
+            const startBtn = document.getElementById('start-upload-btn');
+
+            // Hiển thị giao diện progress và log terminal
+            progressContainer.classList.remove('hidden');
+            logBox.classList.remove('hidden');
+            logBox.innerHTML = `<p class="text-blue-400">[HỆ THỐNG]: Bắt đầu tiến trình tải ${selectedFilesData.length} ảnh lên thư mục assets/size${sizeFolder}...</p>`;
+            
+            // Khóa nút để tránh spam click
+            startBtn.disabled = true;
+            startBtn.classList.add('opacity-50', 'cursor-not-allowed');
+
+            let successCount = 0;
+            const totalFiles = selectedFilesData.length;
+
+            for (let i = 0; i < totalFiles; i++) {
+                const file = selectedFilesData[i];
+                statusText.innerText = `Đang tải: ${file.name} (${i + 1}/${totalFiles})...`;
+                logBox.innerHTML += `<p class="text-yellow-400">⏳ [${i + 1}/${totalFiles}] Đang nén và mã hóa ${file.name}...</p>`;
+                logBox.scrollTop = logBox.scrollHeight;
+
+                const cleanExt = file.name.split('.').pop();
+                const uniqueFileName = `giay-${Date.now()}-${i + 1}.${cleanExt}`;
+                const uploadPath = `assets/size${sizeFolder}/${uniqueFileName}`;
+
+                const url = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${uploadPath}`;
+
+                const bodyData = {
+                    message: `Tải ảnh giày mới Size ${sizeFolder} bằng Web Quản Trị`,
+                    content: file.base64,
+                    branch: BRANCH
+                };
+
+                try {
+                    const res = await fetch(url, {
+                        method: 'PUT',
+                        headers: {
+                            'Authorization': `token ${token}`,
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(bodyData)
+                    });
+
+                    if (res.ok) {
+                        successCount++;
+                        logBox.innerHTML += `<p class="text-green-400">✅ Thành công: Đã tải lên ${uniqueFileName} thành công!</p>`;
+                    } else {
+                        const err = await res.json();
+                        logBox.innerHTML += `<p class="text-red-500">❌ Thất bại: Lỗi file ${file.name} (${err.message || 'Token sai/Không đủ quyền'})</p>`;
+                    }
+                } catch (error) {
+                    logBox.innerHTML += `<p class="text-red-500">❌ Lỗi: Mất kết nối mạng khi tải ${file.name}</p>`;
+                }
+
+                // Cập nhật thanh tiến trình phần trăm thực tế
+                const progressVal = Math.round(((i + 1) / totalFiles) * 100);
+                fill.style.width = `${progressVal}%`;
+                percentText.innerText = `${progressVal}%`;
+                logBox.scrollTop = logBox.scrollHeight;
+            }
+
+            // Hoàn thành
+            statusText.innerText = "Hoàn thành tiến trình!";
+            logBox.innerHTML += `<p class="text-blue-300 font-bold">🎉 [HOÀN THÀNH]: Đã xử lý xong. Tải lên thành công ${successCount}/${totalFiles} ảnh.</p>`;
+            logBox.scrollTop = logBox.scrollHeight;
+
+            showToast(`Đã up thành công ${successCount}/${totalFiles} ảnh giày mới!`, "🎉");
+
+            clearSelectedFiles();
+            
+            startBtn.disabled = false;
+            startBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+        }
     </script>
 </body>
 </html>
 ```
 eof
+
+### 🚀 Giao diện thực tế đã được làm sạch và sửa lỗi hoàn toàn:
+Bạn hãy click vào nút **`Preview`** nằm ở bên phải màn hình chat này để khởi chạy trải nghiệm:
+* Khi bấm **"Xem Toàn Bộ Giày Tại Tiệm"** ➔ Trang danh sách giày sẽ trống, hoàn toàn không còn bất kỳ đôi giày mẫu nào làm loãng thông tin của shop. 
+* Hệ thống sẽ hiển thị một thông báo tinh tế, sẵn sàng tự động đồng bộ và hiển thị ảnh thực tế ngay khi bạn tải ảnh lên các thư mục `assets/size36` đến `assets/size45` từ **Trang Quản Trị** tích hợp!
