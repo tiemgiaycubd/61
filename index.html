@@ -65,6 +65,21 @@
             50% { opacity: 1; }
         }
         .animate-pulse-soft { animation: pulse-soft 2s infinite ease-in-out; }
+
+        /* HOẠT ẢNH NHỊP THỞ HÀO QUANG CHO NÚT BẤM CHÍNH (DYNAMIC GLOW) */
+        @keyframes button-glow {
+            0%, 100% { 
+                transform: scale(1); 
+                box-shadow: 0 10px 25px -5px rgba(244, 63, 94, 0.4), 0 0 0 0 rgba(244, 63, 94, 0.5); 
+            }
+            50% { 
+                transform: scale(1.03); 
+                box-shadow: 0 20px 35px -5px rgba(249, 115, 22, 0.6), 0 0 15px 10px rgba(249, 115, 22, 0); 
+            }
+        }
+        .animate-btn-glow {
+            animation: button-glow 2.5s infinite ease-in-out;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 antialiased flex flex-col min-h-screen overflow-x-hidden">
@@ -94,27 +109,28 @@
     <div id="landing-view" class="flex-1 flex flex-col">
         
         <!-- HERO BANNER KẾT HỢP HOẠT ẢNH AURORA -->
-        <section class="relative bg-gradient-to-br from-gray-950 via-gray-900 to-gray-800 text-white py-24 px-4 text-center overflow-hidden flex-1 flex flex-col justify-center animate-aurora">
+        <section class="relative bg-gradient-to-br from-gray-950 via-gray-900 to-gray-800 text-white py-20 px-4 text-center overflow-hidden flex-1 flex flex-col justify-center animate-aurora">
             <!-- Đèn cực quang nền mờ ảo bay chậm -->
             <div class="absolute top-1/4 left-1/4 w-72 h-72 bg-orange-500/10 rounded-full blur-[100px] animate-float-slow-1 pointer-events-none"></div>
             <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-amber-500/10 rounded-full blur-[120px] animate-float-slow-2 pointer-events-none"></div>
             
-            <div class="relative max-w-3xl mx-auto space-y-8 py-6 z-10">
+            <div class="relative max-w-3xl mx-auto space-y-6 py-4 z-10">
                 <span class="inline-flex items-center gap-1.5 bg-orange-500/20 border border-orange-500/30 text-orange-400 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full animate-pulse-soft">
                     ⚡ GIÀY HIỆU CHÍNH HÃNG - GIÁ HỌC SINH SINH VIÊN
                 </span>
                 
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
-                    TIỆM GIÀY CŨ BÌNH DƯƠNG<br />
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-300">Real & New 2Hand Sneaker</span>
+                <!-- TIÊU ĐỀ PHÂN DÒNG ĐÚNG CHUẨN TRỰC QUAN TRÊN MOBILE -->
+                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black leading-tight tracking-tight uppercase space-y-1 sm:space-y-2">
+                    <span class="block text-white">TIỆM GIÀY CŨ</span>
+                    <span class="block text-white">BÌNH DƯƠNG</span>
+                    <span class="block text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-300">NEW & 2HAND</span>
+                    <span class="block text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-yellow-400 text-base sm:text-3xl font-extrabold tracking-widest mt-1">AUTHENTIC SNEAKER</span>
                 </h1>
                 
-                <div class="pt-6">
-                    <button onclick="window.location.hash = '#catalog'" class="w-full sm:w-auto bg-gradient-to-r từ-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-extrabold px-10 py-5 rounded-2xl shadow-xl hover:shadow-orange-500/30 transition-all text-center hover:scale-105 active:scale-95 transform flex items-center justify-center gap-3 text-lg mx-auto">
-                        <span>👟 XEM TOÀN BỘ GIÀY TẠI TIỆM ➔</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
+                <!-- NÚT BẤM HOẠT ẢNH ĐỘNG DYNAMIC GLOW VỚI DUY NHẤT 1 MŨI TÊN -->
+                <div class="pt-8">
+                    <button onclick="window.location.hash = '#catalog'" class="w-full sm:w-auto bg-gradient-to-r from-rose-500 via-orange-500 to-amber-500 hover:from-rose-600 hover:via-orange-600 hover:to-amber-600 text-white font-extrabold px-8 py-5 rounded-2xl text-center transform flex items-center justify-center gap-2 text-base sm:text-lg mx-auto animate-btn-glow transition-all">
+                        <span>XEM TOÀN BỘ GIÀY TẠI TIỆM ➔</span>
                     </button>
                 </div>
             </div>
@@ -603,6 +619,31 @@
         }
 
         document.getElementById('lightbox-modal').addEventListener('click', function(e) { if (e.target === this) closeLightbox(); });
+
+        async function downloadLightboxImage() {
+            const imgUrl = document.getElementById('lightbox-img').src;
+            if (!imgUrl) return;
+            
+            showToast("Đang chuẩn bị tải ảnh...", "⏳");
+            try {
+                const response = await fetch(imgUrl);
+                const blob = await response.blob();
+                const blobUrl = window.URL.createObjectURL(blob);
+                
+                const link = document.createElement('a');
+                link.href = blobUrl;
+                link.download = `tiemgiaycubd-${Date.now()}.jpg`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                window.URL.revokeObjectURL(blobUrl);
+                showToast("Đã tải ảnh về album máy thành công!", "✅");
+            } catch (error) {
+                window.open(imgUrl, '_blank');
+                showToast("Vui lòng nhấn giữ ảnh 3 giây để lưu vào bộ sưu tập!", "💡");
+            }
+        }
 
         function saveGithubConfig() {
             const token = document.getElementById('gh-token').value.trim();
